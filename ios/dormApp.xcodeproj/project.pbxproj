@@ -16,6 +16,11 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* dormAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* dormAppTests.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		D97A0CF0BBCE40B682AB43B9 /* IRANSansMobile-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F701E9E65804265A0CA7B13 /* IRANSansMobile-Bold.ttf */; };
+		A3C05BC972DE42488FEDFB51 /* IRANSansMobile-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FD2860584204A1094684A5D /* IRANSansMobile-Light.ttf */; };
+		1E0B9AA9DE1F4A288F1CD794 /* IRANSansMobile-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83E90DE2D138428DA009D0FE /* IRANSansMobile-Medium.ttf */; };
+		B564BCA9441D4B6C8BD3F2B7 /* IRANSansMobile-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9FD67E88241E46E79F5D2324 /* IRANSansMobile-UltraLight.ttf */; };
+		A2D5352F0A5E41288E19BF78 /* IRANSansMobile.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A484F6D42C4FBAB6BA5B22 /* IRANSansMobile.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,11 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = dormApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		3F701E9E65804265A0CA7B13 /* IRANSansMobile-Bold.ttf */ = {isa = PBXFileReference; name = "IRANSansMobile-Bold.ttf"; path = "../src/assets/fonts/IRANSansMobile-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7FD2860584204A1094684A5D /* IRANSansMobile-Light.ttf */ = {isa = PBXFileReference; name = "IRANSansMobile-Light.ttf"; path = "../src/assets/fonts/IRANSansMobile-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		83E90DE2D138428DA009D0FE /* IRANSansMobile-Medium.ttf */ = {isa = PBXFileReference; name = "IRANSansMobile-Medium.ttf"; path = "../src/assets/fonts/IRANSansMobile-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9FD67E88241E46E79F5D2324 /* IRANSansMobile-UltraLight.ttf */ = {isa = PBXFileReference; name = "IRANSansMobile-UltraLight.ttf"; path = "../src/assets/fonts/IRANSansMobile-UltraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E9A484F6D42C4FBAB6BA5B22 /* IRANSansMobile.ttf */ = {isa = PBXFileReference; name = "IRANSansMobile.ttf"; path = "../src/assets/fonts/IRANSansMobile.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +150,7 @@
 				00E356EF1AD99517003FC87E /* dormAppTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				1C0B4FDAACCE4911B6A4C8E3 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -156,6 +167,19 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		1C0B4FDAACCE4911B6A4C8E3 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				3F701E9E65804265A0CA7B13 /* IRANSansMobile-Bold.ttf */,
+				7FD2860584204A1094684A5D /* IRANSansMobile-Light.ttf */,
+				83E90DE2D138428DA009D0FE /* IRANSansMobile-Medium.ttf */,
+				9FD67E88241E46E79F5D2324 /* IRANSansMobile-UltraLight.ttf */,
+				E9A484F6D42C4FBAB6BA5B22 /* IRANSansMobile.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -295,6 +319,11 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				D97A0CF0BBCE40B682AB43B9 /* IRANSansMobile-Bold.ttf in Resources */,
+				A3C05BC972DE42488FEDFB51 /* IRANSansMobile-Light.ttf in Resources */,
+				1E0B9AA9DE1F4A288F1CD794 /* IRANSansMobile-Medium.ttf in Resources */,
+				B564BCA9441D4B6C8BD3F2B7 /* IRANSansMobile-UltraLight.ttf in Resources */,
+				A2D5352F0A5E41288E19BF78 /* IRANSansMobile.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
