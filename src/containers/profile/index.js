@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 // import {connect} from 'react-redux';
 
 // function mapStateToProps(state) {
@@ -8,7 +8,11 @@ import {View} from 'react-native';
 
 class Index extends Component {
   render() {
-    return <View>roomList</View>;
+    return (
+      <View>
+        <Text>profile</Text>
+      </View>
+    );
   }
 }
 
