@@ -1,5 +1,7 @@
+export const Auth = 'Auth';
 export const Login = 'Login';
 export const Register = 'Register';
+// export const Register = 'Register';
 export const Profile = 'Profile';
 export const Rooms = 'Rooms';
 export const Requests = 'Requests';

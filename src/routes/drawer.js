@@ -1,20 +1,31 @@
 import React from 'react';
 import {Profile} from '../constants/Navigations';
 import ProfilePage from '../containers/profile';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
 import CenterLayout from '../layouts/center';
 
-const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
-const RightDrawer = () => {
+const ProfileStack = ({navigation}) => {
   return (
-    <Drawer.Navigator>
-      <Drawer.Screen
+    <Stack.Navigator>
+      <Stack.Screen
         name={Profile}
         component={(props) => <ProfilePage {...props} />}
+        options={{
+          headerRight: (props) => (
+            <HeaderBackButton
+              {...props}
+              onPress={() => {
+                navigation.goBack();
+                // Do something
+              }}
+            />
+          ),
+        }}
       />
-    </Drawer.Navigator>
+    </Stack.Navigator>
   );
 };
 
-export default RightDrawer;
+export default ProfileStack;
