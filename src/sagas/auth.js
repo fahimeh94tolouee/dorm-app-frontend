@@ -6,7 +6,6 @@ import axios from 'axios';
 import Storage from 'react-native-expire-storage';
 import * as authApi from '../api/auth';
 import {setToken} from '../libs/tokenManager';
-import {ToastActionsCreators} from 'react-native-redux-toast';
 
 // import checkErrorMessagesExist from '../assets/checkErrorMessagesExist';
 
@@ -30,10 +29,6 @@ function* workerLogin(action) {
     //Todo navigate to main
   } catch (error) {
     yield put(AuthAction.loginFailure());
-    // checkErrorMessagesExist(error) &&
-    //   error.response.data.message.forEach((message) => {
-    // ToastActionsCreators.displayError(error.response.data.message.toString());
-    // });
   }
 }
 
@@ -49,10 +44,5 @@ function* workerRegister(action) {
     yield put(AuthAction.registerSuccess());
   } catch (error) {
     yield put(AuthAction.registerFailure());
-
-    // checkErrorMessagesExist(error) &&
-    // error.response.data.message.forEach((message) => {
-    ToastActionsCreators.displayError(error.response.data.message.toString());
-    // });
   }
 }

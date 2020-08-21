@@ -1,10 +1,10 @@
 import Axios from 'axios/index';
 import Storage from 'react-native-expire-storage';
-import store from '../configureStore';
-import {ToastActionsCreators} from 'react-native-redux-toast';
+// import store from '../configureStore';
 import * as RootNavigation from '../navigations/RootNavigation';
 // import {REACT_APP_API_URL} from 'react-native-dotenv';
 import {REACT_APP_API_URL} from '../constants/baseUrl';
+import Toast, {ERROR, SUCCESS} from '../libs/toastMessage';
 
 import {
   REQUEST_TIMEOUT,
@@ -56,26 +56,20 @@ const Request = (config) => {
 
   Axios.interceptors.response.use(
     function (response) {
+      if (response && response.data && response.data.message) {
+        Toast(response.data.message, SUCCESS);
+      }
       return response;
     },
     function (error) {
-      console.log(error)
       const originalRequest = error.config;
       if (!error.response) {
-        store.dispatch(
-          ToastActionsCreators.displayError(
-            SERVER_INTERRUPT_MESSAGES[REQUEST_TIMEOUT],
-          ),
-        );
+        Toast(SERVER_INTERRUPT_MESSAGES[REQUEST_TIMEOUT], ERROR);
       } else if (
         error.response.status >= 500 &&
         !(error.response && error.response.data && error.response.data.message)
       ) {
-        store.dispatch(
-          ToastActionsCreators.displayError(
-            SERVER_INTERRUPT_MESSAGES[RESPONSE_500],
-          ),
-        );
+        Toast(SERVER_INTERRUPT_MESSAGES[RESPONSE_500], ERROR);
       } else if (
         error.response.status === 401 &&
         originalRequest.url === REACT_APP_API_URL + '/oauth/token'
@@ -133,11 +127,7 @@ const Request = (config) => {
         error.response.data &&
         error.response.data.message
       ) {
-        store.dispatch(
-          ToastActionsCreators.displayError(
-            error.response.data.message.toString(),
-          ),
-        );
+        Toast(error.response.data.message.toString(), ERROR);
       }
       return Promise.reject(error);
     },
