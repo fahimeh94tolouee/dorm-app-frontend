@@ -20,5 +20,6 @@ export const TextContainer = styled.Text`
   color: ${(props) =>
     props.color ? COLORS[props.color].text : COLORS.primary.text};
   text-align: center;
-  font-size: ${Variables.font_sizes.medium};
+  font-family: IRANSansMobile-Light;
+  font-size: ${Variables.font_sizes.small_x1};
 `;

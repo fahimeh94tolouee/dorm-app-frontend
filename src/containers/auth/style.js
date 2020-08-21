@@ -14,10 +14,11 @@ export const InputsContainer = styled.View`
   align-items: center;
   width: 90%;
   flex: 1.5;
+  margin-top: 16px;
   justify-content: center;
 `;
 export const ButtonContainer = styled.View`
-  margin-top: 16px;
+  margin-top: 36px;
   width: 90%;
   flex: 1;
 `;

@@ -12,27 +12,74 @@ import {
 } from './style';
 import {Register} from '../../constants/Navigations';
 import {AuthAction} from '../../actions';
+import {errorGenerator} from '../../assets/functions/errorGenerator';
+import {
+  AT_LEAST_4,
+  NOT_EMPTY,
+  USERNAME,
+  PASSWORD,
+} from '../../constants/inputFieldRelatedConstants';
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: '',
+      username: {value: '', error: ''},
+      password: {value: '', error: ''},
+      disable: true,
     };
   }
 
   sendLoginRequest() {
     const {username, password} = this.state;
-    const data = {
-      username: username,
-      password: password,
-    };
-    this.props.loginRequest(data);
+    if (!this.checkError('', true)) {
+      const data = {
+        username: username.value,
+        password: password.value,
+      };
+      this.props.loginRequest(data);
+      this.setState({disable: false});
+    } else {
+      this.setState({disable: true});
+    }
+  }
+
+  changeField(field, text) {
+    this.setState({[field]: {...this.state[field], value: text}}, () =>
+      this.checkError(field),
+    );
+  }
+  checkError(field, total = false) {
+    const {username, password} = this.state;
+    let error = '';
+    if (field === USERNAME.label || total) {
+      if (!username.value) {
+        error = errorGenerator(NOT_EMPTY, USERNAME.text);
+      } else {
+        error = '';
+      }
+    }
+    if (field === PASSWORD.label || total) {
+      if (!password.value) {
+        error = errorGenerator(NOT_EMPTY, PASSWORD.text);
+      } else if (password.value.length < 4) {
+        error = errorGenerator(AT_LEAST_4, PASSWORD.text);
+      } else {
+        error = '';
+      }
+    }
+    if (!total) {
+      this.setState({
+        [field]: {...this.state[field], error: error},
+        disable: error,
+      });
+    } else {
+      return error;
+    }
   }
 
   render() {
-    const {username, password} = this.state;
+    const {username, password, disable} = this.state;
     const {loading} = this.props;
     return (
       <AuthContainer>
@@ -40,16 +87,18 @@ class Login extends Component {
         <InputsContainer>
           <Input
             icon="user-alt"
-            value={username}
-            onChange={(text) => this.setState({username: text})}
-            placeholder="نام کاربری"
+            error={username.error}
+            value={username.value}
+            onChange={(text) => this.changeField('username', text)}
+            placeholder={USERNAME.text}
           />
-          <View style={{height: 32}} />
+          <View style={{height: 16}} />
           <Input
             icon="key"
-            value={password}
-            onChange={(text) => this.setState({password: text})}
-            placeholder="رمز عبور"
+            error={password.error}
+            value={password.value}
+            onChange={(text) => this.changeField('password', text)}
+            placeholder={PASSWORD.text}
             isSecure={true}
           />
         </InputsContainer>
@@ -57,11 +106,16 @@ class Login extends Component {
           <Button
             color="primary"
             onPress={() => this.sendLoginRequest()}
+            loading={loading}
+            disabled={disable}
             title="ورود"
           />
           <TextLinkContainer
-            onPress={() => this.props.navigation.navigate(Register)}
-            loading={loading}>
+            onPress={
+              !loading
+                ? () => this.props.navigation.navigate(Register)
+                : () => {}
+            }>
             ثبت نام
           </TextLinkContainer>
         </ButtonContainer>

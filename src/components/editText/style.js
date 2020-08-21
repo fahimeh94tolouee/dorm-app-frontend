@@ -13,7 +13,8 @@ export const EditText = styled.TextInput`
   padding: 6px 16px 3px 16px;
   border-radius: 20px;
   text-align: right;
-  font-size: ${Variables.font_sizes.small_x1};
+  font-size: ${Variables.font_sizes.small};
+  font-family: IRANSansMobile-Light;
   border-bottom-width: 1px;
   border-bottom-color: ${(props) =>
     props.isFocused
@@ -29,6 +30,15 @@ export const EditTextContainer = styled.View`
   width: 100%;
   flex-direction: row-reverse;
   align-items: center;
+`;
+
+export const TextError = styled.Text`
+  width: 100%;
+  color: ${Variables.colors.primary_500};
+  font-size: ${Variables.font_sizes.little};
+  font-family: IRANSansMobile-Light;
+  margin-top: 8px;
+  margin-right: ${(props) => (props.hasRightMargin ? '36px' : '0')};
 `;
 
 // border: 1px solid
