@@ -35,7 +35,6 @@ const Request = (config) => {
           Authorization: 'Bearer ' + (await Storage.getItem('accessToken')),
         });
       }
-      console.log(config);
       return config;
     },
     function (error) {
@@ -60,7 +59,7 @@ const Request = (config) => {
       return response;
     },
     function (error) {
-      console.log(error);
+      console.log(error)
       const originalRequest = error.config;
       if (!error.response) {
         store.dispatch(
