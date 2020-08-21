@@ -27,20 +27,21 @@ function CustomDrawerContent(props) {
 export const Routes = () => {
   return (
     <NavigationContainer ref={navigationRef}>
-      <Drawer.Navigator
-        drawerPosition="right"
-        drawerContent={(props) => <CustomDrawerContent {...props} />}>
-        <Drawer.Screen
-          name={Rooms}
-          component={MainStack}
-          // options={{header: () => null}}
-        />
-        <Drawer.Screen
-          name={Profile}
-          component={(props) => <RightStack {...props} />}
-          // options={{header: () => null}}
-        />
-      </Drawer.Navigator>
+      <AuthStack />
+      {/*<Drawer.Navigator*/}
+      {/*  drawerPosition="right"*/}
+      {/*  drawerContent={(props) => <CustomDrawerContent {...props} />}>*/}
+      {/*  <Drawer.Screen*/}
+      {/*    name={Rooms}*/}
+      {/*    component={MainStack}*/}
+      {/*    // options={{header: () => null}}*/}
+      {/*  />*/}
+      {/*  <Drawer.Screen*/}
+      {/*    name={Profile}*/}
+      {/*    component={(props) => <RightStack {...props} />}*/}
+      {/*    // options={{header: () => null}}*/}
+      {/*  />*/}
+      {/*</Drawer.Navigator>*/}
     </NavigationContainer>
   );
 };

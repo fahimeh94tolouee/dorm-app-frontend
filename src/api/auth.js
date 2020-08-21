@@ -1,11 +1,12 @@
 import Request from '../libs/request';
+import {REACT_APP_API_URL} from '../constants/baseUrl';
 
-const baseUrl = process.env.REACT_APP_API_URL;
+const baseUrl = REACT_APP_API_URL;
 
 export const login = (data) => {
   return Request({
     method: 'post',
-    url: baseUrl + '/login',
+    url: baseUrl + '/auth/login/',
     data: data,
   });
 };
@@ -13,7 +14,7 @@ export const login = (data) => {
 export const register = (data) => {
   return Request({
     method: 'post',
-    url: baseUrl + '/register',
+    url: baseUrl + '/auth/register/',
     data: data,
   });
 };

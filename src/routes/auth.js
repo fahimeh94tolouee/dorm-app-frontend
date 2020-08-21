@@ -17,7 +17,7 @@ const AuthStack = () => {
             <LoginPage {...props} />
           </CenterLayout>
         )}
-        // options={{header: () => null}}
+        options={{header: () => null}}
       />
       <Stack.Screen
         name={Register}
@@ -26,7 +26,7 @@ const AuthStack = () => {
             <RegisterPage {...props} />
           </CenterLayout>
         )}
-        // options={{header: () => null}}
+        options={{header: () => null}}
       />
     </Stack.Navigator>
   );
