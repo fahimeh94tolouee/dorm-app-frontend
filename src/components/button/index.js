@@ -1,5 +1,5 @@
 import React from 'react';
-// import {Text} from 'react-native';
+import Loading from '../loading/buttonLoading';
 import {ButtonContainer, TextContainer} from './style';
 
 const Index = (props) => {
@@ -7,8 +7,10 @@ const Index = (props) => {
     <ButtonContainer
       color={props.color}
       onPress={props.onPress}
-      activeOpacity={props.disabled ? 1 : 0.5}>
-      <TextContainer color={props.color}>{props.title}</TextContainer>
+      activeOpacity={1}>
+      <TextContainer color={props.color}>
+        {props.loading ? <Loading size={'large'} /> : props.title}
+      </TextContainer>
     </ButtonContainer>
   );
 };

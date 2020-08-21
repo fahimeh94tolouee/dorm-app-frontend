@@ -14,6 +14,8 @@ export const ButtonContainer = styled.TouchableOpacity`
   padding: 8px 16px;
   border-radius: 24px;
   width: 100%;
+  justify-content: center;
+  height: 48px;
 `;
 
 export const TextContainer = styled.Text`
