@@ -2,6 +2,7 @@ import * as types from '../actions/actionTypes';
 const initialState = {
   loading: false,
   message: '',
+  userLoggedIn: false,
 };
 
 const Auth = (state = initialState, action) => {
@@ -19,6 +20,9 @@ const Auth = (state = initialState, action) => {
       return {...state, loading: false};
     case types.REGISTER_FAILURE:
       return {...state, loading: false};
+
+    case types.CHANGE_USER_LOGGED_IN:
+      return {...state, userLoggedIn: action.payLoad};
 
     default:
       return state;

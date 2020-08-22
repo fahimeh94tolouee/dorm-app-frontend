@@ -42,8 +42,16 @@ const MainTabs = () => {
         activeTintColor: 'tomato',
         inactiveTintColor: 'gray',
       }}>
-      <Tabs.Screen name={Rooms} component={RoomListPage} />
-      <Tabs.Screen name={Requests} component={RequestPage} />
+      <Tabs.Screen
+        name={Rooms}
+        component={RoomListPage}
+        options={{title: 'اتاق‌ها'}}
+      />
+      <Tabs.Screen
+        name={Requests}
+        component={RequestPage}
+        options={{title: 'درخواست‌ها'}}
+      />
     </Tabs.Navigator>
   );
 };

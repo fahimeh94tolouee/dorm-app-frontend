@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {ActivityIndicator} from 'react-native';
+import {Image} from './style';
 class Index extends Component {
   render() {
-    return <ActivityIndicator size="large" />;
+    return <Image source={require('../../../assets/images/time.gif')} />;
   }
 }
 

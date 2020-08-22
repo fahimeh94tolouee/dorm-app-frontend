@@ -1,13 +1,11 @@
 import {takeLatest, call, put} from 'redux-saga/effects';
 import * as types from '../actions/actionTypes';
 import {AuthAction} from '../actions';
-import axios from 'axios';
-
 import Storage from 'react-native-expire-storage';
+import * as RootNavigation from '../navigations/RootNavigation';
 import * as authApi from '../api/auth';
 import {setToken} from '../libs/tokenManager';
-
-// import checkErrorMessagesExist from '../assets/checkErrorMessagesExist';
+import {Rooms} from '../constants/Navigations';
 
 export function* watcherAuth() {
   yield takeLatest(types.LOGIN_REQUEST, workerLogin);
@@ -22,11 +20,9 @@ function* workerLogin(action) {
   try {
     const response = yield call(fetchLogin, action.data);
     const data = response.data;
-    setToken(data);
+    setToken(data.data);
+    yield put(AuthAction.changeUserLoggedIn(true));
     yield put(AuthAction.loginSuccess());
-    // localStorage.setItem('user_state', 1);
-    console.log('MAIN');
-    //Todo navigate to main
   } catch (error) {
     yield put(AuthAction.loginFailure());
   }

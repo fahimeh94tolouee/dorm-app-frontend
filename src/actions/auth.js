@@ -33,3 +33,10 @@ export const registerFailure = () => {
     type: types.REGISTER_FAILURE,
   };
 };
+
+export const changeUserLoggedIn = (isLoggedIn) => {
+  return {
+    type: types.CHANGE_USER_LOGGED_IN,
+    payLoad: isLoggedIn,
+  };
+};
