@@ -19,7 +19,7 @@ export const Text = styled.Text`
   color: ${Variables.colors.complementary};
   font-size: ${Variables.font_sizes.medium};
   padding: 16px 32px 0 0;
-  font-family: IRANSansMobile-Light;
+  font-family: ${Variables.font_family.light};
 `;
 
 export const Image = styled.Image`
@@ -54,7 +54,7 @@ export const Label = styled.Text`
   font-size: ${Variables.font_sizes.small};
   color: ${(props) => (props.color ? COLORS[props.color] : COLORS.default)};
   margin-right: 12px;
-  font-family: IRANSansMobile-Light;
+  font-family: ${Variables.font_family.light};
 `;
 
 export const ViewInCustom = styled.View`

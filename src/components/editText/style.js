@@ -14,7 +14,7 @@ export const EditText = styled.TextInput`
   border-radius: 20px;
   text-align: right;
   font-size: ${Variables.font_sizes.small};
-  font-family: IRANSansMobile-Light;
+  font-family: ${Variables.font_family.light};
   border-bottom-width: 1px;
   border-bottom-color: ${(props) =>
     props.isFocused
@@ -36,7 +36,7 @@ export const TextError = styled.Text`
   width: 100%;
   color: ${Variables.colors.primary_500};
   font-size: ${Variables.font_sizes.little};
-  font-family: IRANSansMobile-Light;
+  font-family: ${Variables.font_family.light};
   margin-top: 8px;
   margin-right: ${(props) => (props.hasRightMargin ? '36px' : '0')};
 `;

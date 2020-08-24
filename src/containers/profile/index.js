@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, Text} from 'react-native';
 import {ProfileContainer, Space} from './style';
 import Input from '../../components/editText';
+import SelectBox from '../../components/selectBox';
 import {
   FIRST_NAME,
   LAST_NAME,
@@ -20,6 +21,7 @@ import {
   AT_LEAST_4,
 } from '../../constants/inputFieldRelatedConstants';
 import {errorGenerator} from '../../assets/functions/errorGenerator';
+import {RELIGIOUS_BELIEF_OPTIONS} from '../../constants/roomMemberPropertiesTypes';
 // import {connect} from 'react-redux';
 
 // function mapStateToProps(state) {
@@ -36,12 +38,19 @@ class Index extends Component {
       major: {value: '', error: ''},
       phone_number: {value: '', error: ''},
       note: {value: '', error: ''},
+      religious_belief: {key: '', value: ''},
     };
   }
 
   changeField(field, text) {
     this.setState(
       {[field]: {...this.state[field], value: text}},
+      // () => this.checkError(field),
+    );
+  }
+  changeSelectableField(field, value) {
+    this.setState(
+      {[field]: value},
       // () => this.checkError(field),
     );
   }
@@ -74,7 +83,15 @@ class Index extends Component {
   //   }
   // }
   render() {
-    const {first_name, last_name, city, major, phone_number, note} = this.state;
+    const {
+      first_name,
+      last_name,
+      city,
+      major,
+      phone_number,
+      religious_belief,
+      note,
+    } = this.state;
     return (
       <ProfileContainer>
         <Input
@@ -94,7 +111,7 @@ class Index extends Component {
         />
         <Space />
         <Input
-          icon="city"
+          icon="map-marker-alt"
           error={city.error}
           value={city.value}
           onChange={(text) => this.changeField(CITY.label, text)}
@@ -102,7 +119,7 @@ class Index extends Component {
         />
         <Space />
         <Input
-          icon="phone-alt"
+          icon="mobile-alt"
           error={phone_number.error}
           value={phone_number.value}
           onChange={(text) => this.changeField(PHONE_NUMBER.label, text)}
@@ -110,11 +127,19 @@ class Index extends Component {
         />
         <Space />
         <Input
-          icon="graduation-cap"
+          icon="book"
           error={major.error}
           value={major.value}
           onChange={(text) => this.changeField(MAJOR.label, text)}
           placeholder={MAJOR.text}
+        />
+        <SelectBox
+          options={RELIGIOUS_BELIEF_OPTIONS}
+          value={religious_belief}
+          label="از لحاظ مذهبی بودن/نبودن چه نوع آدمی هستید؟"
+          onChange={(value) =>
+            this.changeSelectableField(RELIGIOUS_BELIEF.label, value)
+          }
         />
       </ProfileContainer>
     );

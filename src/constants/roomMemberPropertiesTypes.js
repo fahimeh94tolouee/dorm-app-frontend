@@ -1,9 +1,14 @@
-export const RELIGIOUS_BELIEF_TYPES = {
+const RELIGIOUS_BELIEF_TYPES = {
   NONE: -1,
   RELIGIOUS: 1,
   NON_RELIGIOUS: 2,
   NEITHER: 3,
 };
+export const RELIGIOUS_BELIEF_OPTIONS = [
+  {value: 'مذهبی', key: RELIGIOUS_BELIEF_TYPES.RELIGIOUS},
+  {value: 'غیر مذهبی', key: RELIGIOUS_BELIEF_TYPES.NON_RELIGIOUS},
+  {value: 'سازگار با هر دو', key: RELIGIOUS_BELIEF_TYPES.NEITHER},
+];
 
 export const SLEEP_STATUS_TYPES = {
   NONE: -1,

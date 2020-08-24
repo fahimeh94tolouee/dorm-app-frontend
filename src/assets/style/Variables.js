@@ -50,4 +50,8 @@ export default {
     light: 300,
     x_light: 200,
   },
+  font_family: {
+    light: 'IRANSansMobile-Light',
+    bold: 'IRANSansMobile-Bold',
+  },
 };
