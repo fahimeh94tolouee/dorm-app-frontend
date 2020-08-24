@@ -11,9 +11,13 @@ const ProfileStack = ({navigation}) => {
     <Stack.Navigator>
       <Stack.Screen
         name={Profile}
-        component={(props) => <ProfilePage {...props} />}
+        component={(props) => (
+          <CenterLayout>
+            <ProfilePage {...props} />
+          </CenterLayout>
+        )}
         options={{
-          headerRight: (props) => (
+          headerLeft: (props) => (
             <HeaderBackButton
               {...props}
               onPress={() => {
