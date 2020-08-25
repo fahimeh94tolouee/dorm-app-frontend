@@ -1,9 +1,13 @@
-import React, {Component} from 'react';
-import {Image} from './style';
-class Index extends Component {
-  render() {
-    return <Image source={require('../../../assets/images/time.gif')} />;
-  }
-}
+import React from 'react';
+import {ActivityIndicator} from 'react-native';
+import {COLORS, Container} from './style';
 
-export default Index;
+const Loading = (props) => {
+  return (
+    <Container>
+      <ActivityIndicator color={COLORS[props.color || 'default']} size={128} />
+    </Container>
+  );
+};
+
+export default Loading;

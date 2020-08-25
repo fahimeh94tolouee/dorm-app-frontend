@@ -6,17 +6,18 @@ import CenterLayout from '../layouts/center';
 
 const Stack = createStackNavigator();
 
+const ProfileComponent = (props) => (
+  <CenterLayout>
+    <ProfilePage {...props} />
+  </CenterLayout>
+);
 const ProfileStack = ({navigation}) => {
   return (
     <Stack.Navigator>
       <Stack.Screen
         name={Profile}
-        component={(props) => (
-          <CenterLayout>
-            <ProfilePage {...props} />
-          </CenterLayout>
-        )}
-        options={{header: () => null}}
+        component={ProfileComponent}
+        options={{header: () => null, unmountOnBlur: true}}
       />
     </Stack.Navigator>
   );

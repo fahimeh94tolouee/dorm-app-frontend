@@ -18,3 +18,20 @@ export const register = (data) => {
     data: data,
   });
 };
+
+export const updateInfo = (data) => {
+  return Request({
+    method: 'put',
+    url: baseUrl + '/auth/update_info/',
+    needToken: true,
+    data: data,
+  });
+};
+
+export const getInfo = () => {
+  return Request({
+    method: 'get',
+    url: baseUrl + '/auth/account/',
+    needToken: true,
+  });
+};

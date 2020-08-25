@@ -3,6 +3,9 @@ const initialState = {
   loading: false,
   message: '',
   userLoggedIn: false,
+
+  data: {},
+  processing: false,
 };
 
 const Auth = (state = initialState, action) => {
@@ -23,6 +26,20 @@ const Auth = (state = initialState, action) => {
 
     case types.CHANGE_USER_LOGGED_IN:
       return {...state, userLoggedIn: action.payLoad};
+
+    case types.UPDATE_INFO_REQUEST:
+      return {...state, processing: true};
+    case types.UPDATE_INFO_SUCCESS:
+      return {...state, processing: false, data: action.data};
+    case types.UPDATE_INFO_FAILURE:
+      return {...state, processing: false, data: {...state}.data};
+
+    case types.GET_INFO_REQUEST:
+      return {...state, processing: true};
+    case types.GET_INFO_SUCCESS:
+      return {...state, processing: false, data: action.data};
+    case types.GET_INFO_FAILURE:
+      return {...state, processing: false};
 
     default:
       return state;

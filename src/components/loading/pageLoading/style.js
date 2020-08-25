@@ -1,7 +1,14 @@
 import styled from 'styled-components';
-import {Dimensions} from 'react-native';
+import Variables from '../../../assets/style/Variables';
 
-export const Image = styled.Image`
-  width: ${Math.round(Dimensions.get('window').width)};
-  height: ${Math.round(Dimensions.get('window').height)};
+export const COLORS = {
+  primary: Variables.colors.primary_500,
+  default: Variables.colors.complementary_500,
+};
+
+
+export const Container = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 `;

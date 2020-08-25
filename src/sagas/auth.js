@@ -10,6 +10,8 @@ import {Rooms} from '../constants/Navigations';
 export function* watcherAuth() {
   yield takeLatest(types.LOGIN_REQUEST, workerLogin);
   yield takeLatest(types.REGISTER_REQUEST, workerRegister);
+  yield takeLatest(types.UPDATE_INFO_REQUEST, workerUpdateInfo);
+  yield takeLatest(types.GET_INFO_REQUEST, workerGetInfo);
 }
 
 function fetchLogin(data) {
@@ -40,5 +42,33 @@ function* workerRegister(action) {
     yield put(AuthAction.registerSuccess());
   } catch (error) {
     yield put(AuthAction.registerFailure());
+  }
+}
+
+function updateInfo(data) {
+  return authApi.updateInfo(data);
+}
+
+function* workerUpdateInfo(action) {
+  try {
+    const response = yield call(updateInfo, action.data);
+    const data = response.data.data;
+    yield put(AuthAction.updateInfoSuccess(data));
+  } catch (error) {
+    yield put(AuthAction.updateInfoFailure());
+  }
+}
+
+function getInfo() {
+  return authApi.getInfo();
+}
+
+function* workerGetInfo(action) {
+  try {
+    const response = yield call(getInfo);
+    const data = response.data;
+    yield put(AuthAction.updateInfoSuccess(data));
+  } catch (error) {
+    yield put(AuthAction.updateInfoFailure());
   }
 }

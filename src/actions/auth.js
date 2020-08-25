@@ -40,3 +40,38 @@ export const changeUserLoggedIn = (isLoggedIn) => {
     payLoad: isLoggedIn,
   };
 };
+
+export const updateInfo = (data) => {
+  return {
+    type: types.UPDATE_INFO_REQUEST,
+    data: data,
+  };
+};
+export const updateInfoSuccess = (data) => {
+  return {
+    type: types.UPDATE_INFO_SUCCESS,
+    data: data,
+  };
+};
+export const updateInfoFailure = () => {
+  return {
+    type: types.UPDATE_INFO_FAILURE,
+  };
+};
+
+export const getInfo = (data) => {
+  return {
+    type: types.GET_INFO_REQUEST,
+  };
+};
+export const getInfoSuccess = (data) => {
+  return {
+    type: types.GET_INFO_SUCCESS,
+    data: data,
+  };
+};
+export const getInfoFailure = () => {
+  return {
+    type: types.GET_INFO_FAILURE,
+  };
+};

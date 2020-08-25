@@ -6,8 +6,10 @@ import {AuthStack, MainStack, RightStack} from '../routes';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {Profile, Rooms} from '../constants/Navigations';
 import Storage from 'react-native-expire-storage';
-import Loading from '../components/loading/pageLoading';
+import Loading from '../components/loading/initLoading';
 import CustomDrawerContent from './CustomDrawerContent';
+import CenterLayout from '../layouts/center';
+import ProfilePage from '../containers/profile';
 
 const Drawer = createDrawerNavigator();
 
@@ -23,12 +25,17 @@ const Routes = (props) => {
   if (loading) {
     return <Loading />;
   }
+  const ProfileComponent = (props) => (
+    <CenterLayout>
+      <ProfilePage {...props} />
+    </CenterLayout>
+  );
   return (
     <NavigationContainer ref={navigationRef}>
       {isLoggedIn ? (
         <Drawer.Navigator
           drawerPosition="right"
-          drawerContent={(props) => <CustomDrawerContent {...props} />}>
+          drawerContent={CustomDrawerContent}>
           <Drawer.Screen
             name={Rooms}
             component={MainStack}
@@ -41,10 +48,11 @@ const Routes = (props) => {
           />
           <Drawer.Screen
             name={Profile}
-            component={(props) => <RightStack {...props} />}
+            component={ProfileComponent}
             options={({route, navigation}) => {
               return {
                 swipeEnabled: false,
+                unmountOnBlur: true,
               };
             }}
           />

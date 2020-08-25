@@ -17,6 +17,7 @@ import {Auth} from '../constants/Navigations';
 const Request = (config) => {
   const needToken = config.needToken;
   const redirectLogin = () => {
+    console.log(RootNavigation.isFirstPage(), "RRR");
     if (!RootNavigation.isFirstPage()) {
       RootNavigation.navigate(Auth);
     }
@@ -71,12 +72,12 @@ const Request = (config) => {
       ) {
         Toast(SERVER_INTERRUPT_MESSAGES[RESPONSE_500], ERROR);
       } else if (
-        error.response.status === 401 &&
+        error.response.status === 403 &&
         originalRequest.url === REACT_APP_API_URL + '/oauth/token'
       ) {
         removeTokens();
       } else if (
-        error.response.status === 401 &&
+        error.response.status === 403 &&
         !originalRequest._refreshTry
       ) {
         if (refreshing) {
@@ -92,6 +93,7 @@ const Request = (config) => {
             });
         }
         originalRequest._refreshTry = true;
+        Storage.getItem('refreshToken').then(console.log)
         if (!Storage.getItem('refreshToken')) {
           removeTokens();
           return Promise.reject(error);
