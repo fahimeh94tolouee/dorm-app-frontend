@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
-import {ProfileContainer, Space} from './style';
+import {
+  ProfileContainer,
+  Space,
+  SelectBoxesContainer,
+  SelectBoxContainer,
+  SelectBoxContainerLabel,
+} from './style';
 import Input from '../../components/editText';
 import SelectBox from '../../components/selectBox';
 import {
@@ -133,14 +139,20 @@ class Index extends Component {
           onChange={(text) => this.changeField(MAJOR.label, text)}
           placeholder={MAJOR.text}
         />
-        <SelectBox
-          options={RELIGIOUS_BELIEF_OPTIONS}
-          value={religious_belief}
-          label="از لحاظ مذهبی بودن/نبودن چه نوع آدمی هستید؟"
-          onChange={(value) =>
-            this.changeSelectableField(RELIGIOUS_BELIEF.label, value)
-          }
-        />
+        <SelectBoxesContainer>
+          <SelectBoxContainer>
+            <SelectBoxContainerLabel>اعتقادات مذهبی</SelectBoxContainerLabel>
+            <SelectBox
+              options={RELIGIOUS_BELIEF_OPTIONS}
+              value={religious_belief}
+              label="از لحاظ مذهبی بودن/نبودن چه نوع آدمی هستید؟"
+              placeholder="اعتقادات مذهبی"
+              onChange={(value) =>
+                this.changeSelectableField(RELIGIOUS_BELIEF.label, value)
+              }
+            />
+          </SelectBoxContainer>
+        </SelectBoxesContainer>
       </ProfileContainer>
     );
   }

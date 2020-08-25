@@ -2,12 +2,11 @@ import styled from 'styled-components';
 import Variables from '../../assets/style/Variables';
 
 export const SelectBoxContainer = styled.TouchableOpacity`
-  width: 100%;
+  flex: 1;
   background-color: red;
 `;
 
 export const SelectBoxClosedContainer = styled.View`
-  width: 100%;
   background-color: ${Variables.colors.complementary_400};
   padding: 8px;
   flex-direction: row-reverse;
@@ -18,6 +17,7 @@ export const SelectedItemText = styled.Text`
   font-family: ${Variables.font_family.light};
   font-size: ${Variables.font_sizes.small};
   color: ${Variables.colors.complementary_900};
+  flex: 1;
 `;
 
 export const SelectBoxOpenContainerModal = styled.Modal`
