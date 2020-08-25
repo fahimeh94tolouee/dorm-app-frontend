@@ -10,8 +10,6 @@ import {
   SelectBoxContainer,
   SelectBoxContainerLabel,
   ParentContainer,
-  Header,
-  HeaderText,
 } from './style';
 import Input from '../../components/editText';
 import SelectBox from '../../components/selectBox';
@@ -43,6 +41,7 @@ import {
   SLEEP_STATUS_TYPES,
 } from '../../constants/roomMemberPropertiesTypes';
 import {AuthAction} from '../../actions';
+import Header from '../../components/header';
 
 class Index extends Component {
   constructor(props) {
@@ -235,21 +234,13 @@ class Index extends Component {
     const {loading} = this.props;
     return (
       <ParentContainer>
-        <Header>
-          <Ionicons
-            name={'checkmark-sharp'}
-            color="white"
-            size={32}
-            onPress={() => this.saveInfo()}
-          />
-          <HeaderText>ویرایش اطلاعات کاربری</HeaderText>
-          <Ionicons
-            name={'ios-arrow-back'}
-            color="white"
-            size={32}
-            onPress={() => this.props.navigation.goBack()}
-          />
-        </Header>
+        <Header
+          title="ویرایش اطلاعات کاربری"
+          rightIcon={'checkmark-sharp'}
+          rightIconOnPress={() => this.saveInfo()}
+          leftIcon={'ios-arrow-back'}
+          leftIconOnPress={() => this.props.navigation.goBack()}
+        />
         {loading ? (
           <Loading color="primary" />
         ) : (

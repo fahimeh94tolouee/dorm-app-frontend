@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import {navigationRef} from './RootNavigation';
-import {AuthStack, MainStack, RightStack} from '../routes';
+import {AuthStack, MainStack} from '../routes';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {Profile, Rooms} from '../constants/Navigations';
 import Storage from 'react-native-expire-storage';

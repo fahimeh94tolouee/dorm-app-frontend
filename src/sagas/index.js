@@ -1,8 +1,7 @@
-// Imports: Dependencies
-import {all, fork} from 'redux-saga/effects';
+import {all} from 'redux-saga/effects';
 import {watcherAuth} from './auth';
-// Imports: Redux Sagas
-// Redux Saga: Root Saga
+import {watcherRoom} from './room';
+
 export function* rootSaga() {
-  yield all([watcherAuth()]);
+  yield all([watcherAuth(), watcherRoom()]);
 }

@@ -1,3 +1,4 @@
 import * as AuthAction from './auth';
+import * as RoomAction from './room';
 
-export {AuthAction};
+export {AuthAction, RoomAction};
