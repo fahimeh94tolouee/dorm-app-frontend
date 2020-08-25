@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {RoomAction} from '../../actions';
 import {ParentContainer, RoomListContainer} from './style';
 import Header from '../../components/header';
+import Card from '../../components/card';
 
 class Index extends Component {
   constructor(props) {
@@ -46,7 +47,9 @@ class Index extends Component {
             otherProps: {keyboardType: 'numeric'},
           }}
         />
-        <RoomListContainer />
+        <RoomListContainer>
+          <Card title="اتاق ۱۰۳" />
+        </RoomListContainer>
       </ParentContainer>
     );
   }
