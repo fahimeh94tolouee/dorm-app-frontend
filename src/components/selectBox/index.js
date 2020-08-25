@@ -28,7 +28,9 @@ const SelectBox = (props) => {
       }}>
       <SelectBoxClosedContainer>
         <SelectedItemText>
-          {(props.value && props.value.value) || props.placeholder}
+          {(props.value && props.value.value) ||
+            props.placeholder ||
+            'انتخاب کنید'}
         </SelectedItemText>
         <MaterialIcons name="touch-app" size={24} />
       </SelectBoxClosedContainer>

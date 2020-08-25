@@ -32,12 +32,21 @@ const Routes = (props) => {
           <Drawer.Screen
             name={Rooms}
             component={MainStack}
+            options={{
+              drawerLabel: () => null,
+              title: null,
+              drawerIcon: () => null,
+            }}
             // options={{header: () => null}}
           />
           <Drawer.Screen
             name={Profile}
             component={(props) => <RightStack {...props} />}
-            // options={{header: () => null}}
+            options={({route, navigation}) => {
+              return {
+                swipeEnabled: false,
+              };
+            }}
           />
         </Drawer.Navigator>
       ) : (

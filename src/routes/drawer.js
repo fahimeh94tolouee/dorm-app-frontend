@@ -16,17 +16,7 @@ const ProfileStack = ({navigation}) => {
             <ProfilePage {...props} />
           </CenterLayout>
         )}
-        options={{
-          headerLeft: (props) => (
-            <HeaderBackButton
-              {...props}
-              onPress={() => {
-                navigation.goBack();
-                // Do something
-              }}
-            />
-          ),
-        }}
+        options={{header: () => null}}
       />
     </Stack.Navigator>
   );

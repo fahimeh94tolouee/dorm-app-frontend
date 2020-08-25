@@ -23,6 +23,7 @@ const Index = (props) => {
           value={props.value}
           placeholder={props.placeholder}
           secureTextEntry={props.isSecure}
+          {...props}
         />
       </EditTextContainer>
       <TextError hasRightMargin={!!props.icon}>{props.error}</TextError>
