@@ -8,7 +8,7 @@ const COLORS = [
   {color: Variables.colors.blue},
 ];
 export const CardContainer = styled.View`
-  height: 128px;
+  height: 160px;
   width: 100%;
   border-radius: 8px;
   flex-direction: row-reverse;
@@ -56,5 +56,5 @@ export const LeftPartText = styled.Text`
 
 export const LeftPartBody = styled.View`
   width: 100%;
-  height: 50%;
+  height: 65%;
 `;

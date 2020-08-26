@@ -10,7 +10,7 @@ const Index = (props) => {
       littleRound={props.littleRound}
       onPress={props.onPress}
       activeOpacity={1}>
-      <TextContainer color={props.color}>
+      <TextContainer color={props.color} size={props.size}>
         {props.loading ? <Loading size={'large'} /> : props.title}
       </TextContainer>
     </ButtonContainer>

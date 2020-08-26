@@ -10,6 +10,14 @@ const COLORS = {
     background: Variables.colors.complementary_450,
     text: Variables.colors.complementary_800,
   },
+  error: {
+    background: Variables.colors.red_500,
+    text: Variables.colors.red_600,
+  },
+  success: {
+    background: Variables.colors.success,
+    text: Variables.colors.green_100,
+  },
 };
 
 export const ButtonContainer = styled.TouchableOpacity`
@@ -34,5 +42,8 @@ export const TextContainer = styled.Text`
     props.color ? COLORS[props.color].text : COLORS.primary.text};
   text-align: center;
   font-family: ${Variables.font_family.light};
-  font-size: ${Variables.font_sizes.small_x1};
+  font-size: ${(props) =>
+    props.size === 'small'
+      ? Variables.font_sizes.small
+      : Variables.font_sizes.small_x1};
 `;
