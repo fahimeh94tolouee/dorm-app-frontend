@@ -34,6 +34,11 @@ export default {
     red_600: '#a90021',
     red_700: '#660014',
     red: '#870002',
+    lemon: '#ffbf00',
+    pink: '#ef476f',
+    blue: '#2274a5',
+    green: '#32936f',
+    orange: '#F04C2D',
   },
   font_sizes: {
     large: '32px',

@@ -6,6 +6,8 @@ const Index = (props) => {
   return (
     <ButtonContainer
       color={props.color}
+      hasBorder={props.border}
+      littleRound={props.littleRound}
       onPress={props.onPress}
       activeOpacity={1}>
       <TextContainer color={props.color}>

@@ -6,13 +6,24 @@ const COLORS = {
     background: Variables.colors.primary_700,
     text: Variables.colors.complementary,
   },
+  secondary: {
+    background: Variables.colors.complementary_450,
+    text: Variables.colors.complementary_800,
+  },
 };
 
 export const ButtonContainer = styled.TouchableOpacity`
-  background-color: ${(props) =>
+  border-width: ${(props) => (props.hasBorder ? '1px' : '0')};
+  border-color: ${(props) =>
     props.color ? COLORS[props.color].background : COLORS.primary.background};
+  background-color: ${(props) =>
+    !props.hasBorder
+      ? props.color
+        ? COLORS[props.color].background
+        : COLORS.primary.background
+      : Variables.colors.complementary};
   padding: 8px 16px;
-  border-radius: 24px;
+  border-radius: ${(props) => (!props.littleRound ? '24px' : '4px')};
   width: 100%;
   justify-content: center;
   height: 48px;

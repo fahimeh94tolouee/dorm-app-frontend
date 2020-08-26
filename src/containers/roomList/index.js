@@ -5,6 +5,8 @@ import {RoomAction} from '../../actions';
 import {ParentContainer, RoomListContainer} from './style';
 import Header from '../../components/header';
 import Card from '../../components/card';
+import Button from '../../components/button';
+import Loading from '../../components/loading/pageLoading';
 
 class Index extends Component {
   constructor(props) {
@@ -31,6 +33,10 @@ class Index extends Component {
   }
   render() {
     const {searchField, show} = this.state;
+    const {loading, list} = this.props;
+    let listData = searchField
+      ? list.filter((item) => item.capacity === parseInt(searchField))
+      : list;
     return (
       <ParentContainer>
         <Header
@@ -47,9 +53,28 @@ class Index extends Component {
             otherProps: {keyboardType: 'numeric'},
           }}
         />
-        <RoomListContainer>
-          <Card title="اتاق ۱۰۳" />
-        </RoomListContainer>
+        {loading ? (
+          <Loading />
+        ) : (
+          <RoomListContainer>
+            {listData.map((item) => {
+              return (
+                <Card
+                  colorId={item.id}
+                  title={`${item.block_number}-${item.room_number}`}
+                  description={`ظرفیت: ${item.capacity}`}>
+                  <Button
+                    title="عضویت"
+                    onPress={() => false}
+                    color="secondary"
+                    littleRound={true}
+                    // loading={true}
+                  />
+                </Card>
+              );
+            })}
+          </RoomListContainer>
+        )}
       </ParentContainer>
     );
   }
