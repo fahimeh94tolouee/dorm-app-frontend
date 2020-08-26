@@ -13,7 +13,11 @@ const Card = (props) => {
     <CardContainer>
       <RightPart colorId={props.colorId % 4}>
         {!!props.icon && <FontAwesome5 name={props.icon} size={48} />}
-        {!!props.title && <RightPartText>{props.title}</RightPartText>}
+        {!!props.title && (
+          <RightPartText colorId={props.colorId % 4}>
+            {props.title}
+          </RightPartText>
+        )}
       </RightPart>
       <LeftPart>
         {!!props.description && (

@@ -34,10 +34,10 @@ export default {
     red_600: '#a90021',
     red_700: '#660014',
     red: '#870002',
-    lemon: '#ffbf00',
-    pink: '#ef476f',
-    blue: '#2274a5',
-    green: '#32936f',
+    lemon: 'rgba(255,191,0,0.15)',
+    pink: 'rgba(239,71,111,0.15)',
+    blue: 'rgba(34,116,165,0.15)',
+    green: 'rgba(50,147,111,0.15)',
     orange: '#F04C2D',
   },
   font_sizes: {
@@ -56,7 +56,9 @@ export default {
     x_light: 200,
   },
   font_family: {
+    ultra_light: 'IRANSansMobile-UltraLight',
     light: 'IRANSansMobile-Light',
+    medium: 'IRANSansMobile-Medium',
     bold: 'IRANSansMobile-Bold',
   },
 };

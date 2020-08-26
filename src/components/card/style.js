@@ -10,9 +10,9 @@ const COLORS = [
 export const CardContainer = styled.View`
   height: 128px;
   width: 100%;
-  border: 1px solid ${Variables.colors.complementary_600};
   border-radius: 8px;
   flex-direction: row-reverse;
+  elevation: 3;
   align-items: center;
   padding: 8px;
   background-color: ${Variables.colors.complementary};
@@ -32,9 +32,10 @@ export const RightPart = styled.View`
 `;
 
 export const RightPartText = styled.Text`
+  opacity: 1;
   font-family: ${Variables.font_family.bold};
   font-size: ${Variables.font_sizes.medium};
-  color: ${Variables.colors.complementary_100};
+  color: ${Variables.colors.black_800};
 `;
 
 export const LeftPart = styled.View`
@@ -48,9 +49,9 @@ export const LeftPart = styled.View`
 `;
 
 export const LeftPartText = styled.Text`
-  font-family: ${Variables.font_family.light};
-  font-size: ${Variables.font_sizes.small_x1};
-  color: ${Variables.colors.complementary_700};
+  font-family: ${Variables.font_family.ultra_light};
+  font-size: ${Variables.font_sizes.small};
+  color: ${Variables.colors.black_800};
 `;
 
 export const LeftPartBody = styled.View`

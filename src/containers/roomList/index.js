@@ -67,6 +67,7 @@ class Index extends Component {
                     title="عضویت"
                     onPress={() => false}
                     color="secondary"
+                    border
                     littleRound={true}
                     // loading={true}
                   />
