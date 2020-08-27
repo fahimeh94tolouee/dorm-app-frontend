@@ -12,7 +12,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 const Card = (props) => {
   const colorId = props.colorId ? props.colorId % 4 : undefined;
   return (
-    <CardContainer onPress={props.onPress}>
+    <CardContainer onPress={props.onPress} activeOpacity={1}>
       <RightPart colorId={colorId} icon={!!props.icon}>
         {!!props.icon && (
           <FontAwesome5

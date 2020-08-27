@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {View} from 'react-native';
 import {RoomAction} from '../../../actions';
 import Header from '../../../components/header';
 import Loading from '../../../components/loading/pageLoading';
@@ -13,8 +14,17 @@ import {
   StatusText,
 } from '../style';
 import Button from '../../../components/button';
+import Modal from '../../../components/modal';
+import UserProperties from './userProperties';
 
 class Index extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userModal: {show: false, data: {}},
+    };
+  }
+
   componentDidMount() {
     this.props.getRoomUsersInfo(this.props.route.params.roomId);
   }
@@ -27,8 +37,19 @@ class Index extends Component {
       loading,
       userList,
     } = this.props;
+    const {userModal} = this.state;
     return (
       <ParentContainer>
+        {userModal.show && (
+          <Modal
+            show={userModal.show}
+            title={`مشخصات ${userModal.data.user}`}
+            onClose={() =>
+              this.setState({userModal: {...userModal, show: false}})
+            }>
+            <UserProperties user={userModal.data} />
+          </Modal>
+        )}
         <Header
           title={`اتاق ${roomName}`}
           rightIcon={'ios-menu-sharp'}
@@ -50,7 +71,9 @@ class Index extends Component {
                     color: userState.color,
                   }}
                   description={`نام کاربری: ${item.user.user}`}
-                  onPress={() => {}}>
+                  onPress={() =>
+                    this.setState({userModal: {data: item.user, show: true}})
+                  }>
                   <CardBottomPartContainer>
                     <MyStatusContainer>
                       <StatusText>وضعیت کاربر: </StatusText>

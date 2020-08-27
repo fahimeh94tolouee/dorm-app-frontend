@@ -38,3 +38,18 @@ export const StatusText = styled.Text`
 export const ButtonContainer = styled.View`
   width: 50%;
 `;
+
+export const UserPropertyParent = styled.View`
+  width: 100%;
+`;
+export const UserPropertyContainer = styled.View`
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 36px;
+`;
+
+export const UserPropertyText = styled.Text`
+  font-family: ${Variables.font_family.light};
+`;
