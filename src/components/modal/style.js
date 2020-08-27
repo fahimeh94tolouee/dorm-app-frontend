@@ -21,17 +21,21 @@ export const ModalOverlayContainer = styled.View`
 export const TitleContainer = styled.View`
   flex-direction: row-reverse;
   justify-content: space-between;
-  padding: 8px;
+  padding: 12px;
   background-color: ${Variables.colors.primary_500};
-  width: 90%;
+  width: 100%;
+  height: 64px;
 `;
 
 export const Title = styled.Text`
   font-family: ${Variables.font_family.bold};
+  font-size: ${Variables.font_sizes.small_x1};
+  color: ${Variables.colors.complementary};
 `;
 
-export const BodyContainer = styled.View`
-  padding: 8px;
+export const BodyContainer = styled.ScrollView`
+  padding: 12px;
   background-color: ${Variables.colors.complementary};
-  width: 90%;
+  width: 100%;
+  height: 300px;
 `;

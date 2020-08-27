@@ -3,6 +3,8 @@ import {
   UserPropertyParent,
   UserPropertyContainer,
   UserPropertyText,
+  UserPropertyTitleContainer,
+  UserPropertyTitle,
 } from '../style';
 import {
   CLEAN_STATUS_OPTIONS,
@@ -11,6 +13,7 @@ import {
   RELIGIOUS_BELIEF_OPTIONS,
   SLEEP_STATUS_OPTIONS,
 } from '../../../constants/roomMemberPropertiesTypes';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 const UserProperties = ({user}) => {
   const rb = RELIGIOUS_BELIEF_OPTIONS.filter(
     (item) => item.key === user.religious_belief,
@@ -28,7 +31,6 @@ const UserProperties = ({user}) => {
     (item) => item.key === user.personality_type,
   );
   const items = [
-    {label: 'نام کاربری', value: user.user},
     {label: 'نام', value: user.first_name},
     {label: 'نام خانوادگی', value: user.last_name},
     {label: 'شهر', value: user.city},
@@ -61,7 +63,10 @@ const UserProperties = ({user}) => {
       {items.map((item) => {
         return (
           <UserPropertyContainer>
-            <UserPropertyText>{item.label}</UserPropertyText>
+            <UserPropertyTitleContainer>
+              <Ionicons name="information-circle" size={24} color={'#863333'} />
+              <UserPropertyTitle>{item.label}</UserPropertyTitle>
+            </UserPropertyTitleContainer>
             <UserPropertyText>
               {item.value ? item.value : '--'}
             </UserPropertyText>

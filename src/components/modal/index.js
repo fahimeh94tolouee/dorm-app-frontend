@@ -15,7 +15,12 @@ const Index = (props) => {
       <ModalOverlayContainer show={props.show}>
         <TitleContainer>
           <Title>{props.title}</Title>
-          <FontAwesome name="close" size={16} onPress={() => props.onClose()} />
+          <FontAwesome
+            name="close"
+            size={32}
+            color="white"
+            onPress={() => props.onClose()}
+          />
         </TitleContainer>
         <BodyContainer>{props.children}</BodyContainer>
       </ModalOverlayContainer>
