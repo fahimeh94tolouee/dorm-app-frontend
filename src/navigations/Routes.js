@@ -43,6 +43,7 @@ const Routes = (props) => {
               drawerLabel: () => null,
               title: null,
               drawerIcon: () => null,
+              unmountOnBlur: true,
             }}
             // options={{header: () => null}}
           />

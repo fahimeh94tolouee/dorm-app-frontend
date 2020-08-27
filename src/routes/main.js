@@ -45,12 +45,12 @@ const MainTabs = () => {
       <Tabs.Screen
         name={Rooms}
         component={RoomStack}
-        options={{title: 'اتاق‌ها'}}
+        options={{title: 'اتاق‌ها', unmountOnBlur: true}}
       />
       <Tabs.Screen
         name={Requests}
         component={RequestPage}
-        options={{title: 'درخواست‌ها'}}
+        options={{title: 'درخواست‌ها', unmountOnBlur: true,}}
       />
     </Tabs.Navigator>
   );
