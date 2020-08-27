@@ -42,7 +42,7 @@ export default {
     green: 'rgba(50,147,111,0.15)',
     orange: '#F04C2D',
     success: '#49a078',
-    warning: '#ffd000',
+    warning: '#ecd943',
   },
   font_sizes: {
     large: '32px',

@@ -7,7 +7,14 @@ const COLORS = [
   {color: Variables.colors.green},
   {color: Variables.colors.blue},
 ];
-export const CardContainer = styled.View`
+
+export const ICON_COLORS = {
+  secondary: Variables.colors.complementary_500,
+  success: Variables.colors.success,
+  warning: Variables.colors.warning,
+};
+
+export const CardContainer = styled.TouchableOpacity`
   height: 160px;
   width: 100%;
   border-radius: 8px;
@@ -25,7 +32,7 @@ export const RightPart = styled.View`
   background-color: ${(props) =>
     props.colorId !== undefined
       ? COLORS[props.colorId].color
-      : Variables.colors.primary_700};
+      : Variables.colors.complementary};
   border-radius: 50px;
   align-items: center;
   justify-content: center;

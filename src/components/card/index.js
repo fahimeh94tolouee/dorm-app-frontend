@@ -6,17 +6,23 @@ import {
   LeftPart,
   LeftPartText,
   LeftPartBody,
+  ICON_COLORS,
 } from './style';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 const Card = (props) => {
+  const colorId = props.colorId ? props.colorId % 4 : undefined;
   return (
-    <CardContainer>
-      <RightPart colorId={props.colorId % 4}>
-        {!!props.icon && <FontAwesome5 name={props.icon} size={48} />}
+    <CardContainer onPress={props.onPress}>
+      <RightPart colorId={colorId} icon={!!props.icon}>
+        {!!props.icon && (
+          <FontAwesome5
+            name={props.icon.name}
+            size={48}
+            color={ICON_COLORS[props.icon.color]}
+          />
+        )}
         {!!props.title && (
-          <RightPartText colorId={props.colorId % 4}>
-            {props.title}
-          </RightPartText>
+          <RightPartText colorId={colorId}>{props.title}</RightPartText>
         )}
       </RightPart>
       <LeftPart>

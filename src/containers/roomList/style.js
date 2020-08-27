@@ -12,7 +12,7 @@ export const ParentContainer = styled.View`
   width: 100%;
 `;
 
-export const RoomListContainer = styled.ScrollView`
+export const ListContainer = styled.ScrollView`
   margin: 32px auto;
   padding: 0 16px;
   flex: 1;

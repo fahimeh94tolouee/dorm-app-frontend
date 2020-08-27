@@ -2,7 +2,7 @@ import * as types from '../actions/actionTypes';
 const initialState = {
   loading: false,
   list: [],
-  data: {},
+  userList: [],
 };
 
 const Room = (state = initialState, action) => {
@@ -17,7 +17,7 @@ const Room = (state = initialState, action) => {
     case types.GET_ROOM_USERS_LIST_REQUEST:
       return {...state, loading: true};
     case types.GET_ROOM_USERS_LIST_SUCCESS:
-      return {...state, loading: false, data: action.data};
+      return {...state, loading: false, userList: action.data};
     case types.GET_ROOM_USERS_LIST_FAILURE:
       return {...state, loading: false};
     default:

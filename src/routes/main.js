@@ -4,7 +4,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Requests, Rooms} from '../constants/Navigations';
 import RequestPage from '../containers/requests';
-import RoomListPage from '../containers/roomList';
+import {RoomStack} from './index';
 
 const Tabs = createBottomTabNavigator();
 
@@ -44,7 +44,7 @@ const MainTabs = () => {
       }}>
       <Tabs.Screen
         name={Rooms}
-        component={RoomListPage}
+        component={RoomStack}
         options={{title: 'اتاق‌ها'}}
       />
       <Tabs.Screen

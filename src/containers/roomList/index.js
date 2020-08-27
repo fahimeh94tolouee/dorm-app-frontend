@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
 import {connect} from 'react-redux';
 import {RoomAction} from '../../actions';
 import {
   ParentContainer,
-  RoomListContainer,
+  ListContainer,
   CardBottomPartContainer,
   MyStatusContainer,
   StatusText,
@@ -14,7 +13,7 @@ import Header from '../../components/header';
 import Card from '../../components/card';
 import Button from '../../components/button';
 import Loading from '../../components/loading/pageLoading';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {RoomsUser} from '../../constants/Navigations';
 import UserState, {OK, PENDING} from '../../constants/userStateTypes';
 
 class Index extends Component {
@@ -65,13 +64,20 @@ class Index extends Component {
         {loading ? (
           <Loading />
         ) : (
-          <RoomListContainer>
+          <ListContainer>
             {listData.map((item) => {
+              let roomName = `${item.block_number}-${item.room_number}`;
               return (
                 <Card
                   colorId={item.id}
-                  title={`${item.block_number}-${item.room_number}`}
-                  description={`ظرفیت: ${item.capacity}`}>
+                  title={roomName}
+                  description={`ظرفیت: ${item.capacity}`}
+                  onPress={() =>
+                    this.props.navigation.navigate(RoomsUser, {
+                      roomId: item.id,
+                      roomName: roomName,
+                    })
+                  }>
                   <CardBottomPartContainer>
                     <MyStatusContainer>
                       <StatusText>وضعیت من در این اتاق: </StatusText>
@@ -85,17 +91,17 @@ class Index extends Component {
                 </Card>
               );
             })}
-          </RoomListContainer>
+          </ListContainer>
         )}
       </ParentContainer>
     );
   }
+  //TODO EMPTY STATE
 
   renderButton(item) {
     let title = 'عضویت';
     let color = 'success';
     let method = () => console.log('UU');
-    console.log(item.my_status === OK, 'EEE');
     if (item.my_status === OK) {
       title = 'لغو عضویت';
       color = 'error';
