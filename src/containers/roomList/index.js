@@ -13,6 +13,7 @@ import Header from '../../components/header';
 import Card from '../../components/card';
 import Button from '../../components/button';
 import Loading from '../../components/loading/pageLoading';
+import EmptyState from '../../components/emptyState';
 import {RoomsUser} from '../../constants/Navigations';
 import UserState, {OK, PENDING} from '../../constants/userStateTypes';
 
@@ -64,6 +65,15 @@ class Index extends Component {
         />
         {loading ? (
           <Loading />
+        ) : listData.length === 0 ? (
+          searchField ? (
+            <EmptyState
+              icon="bed-empty"
+              text="اتاقی با ظرفیت انتخاب شده وجود ندارد."
+            />
+          ) : (
+            <EmptyState icon="bed-empty" text="اتاقی ثبت نشده است." />
+          )
         ) : (
           <ListContainer>
             {listData.map((item) => {

@@ -16,6 +16,7 @@ import {
 import Button from '../../../components/button';
 import Modal from '../../../components/modal';
 import UserProperties from './userProperties';
+import EmptyState from '../../../components/emptyState';
 
 class Index extends Component {
   constructor(props) {
@@ -59,13 +60,18 @@ class Index extends Component {
         />
         {loading ? (
           <Loading />
+        ) : userList.length === 0 ? (
+          <EmptyState
+            icon="account-group"
+            text="هنوز هیچ کاربری در این اتاق ثبت نام نکرده است."
+          />
         ) : (
           <ListContainer>
             {userList.map((item) => {
               let userState = UserState[item.user_state];
               return (
                 <Card
-                  // colorId={item.id}
+                  key={item.id}
                   icon={{
                     name: userState.icon,
                     color: userState.color,
