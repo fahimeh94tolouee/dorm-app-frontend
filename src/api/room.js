@@ -18,3 +18,12 @@ export const getUsersList = (id) => {
     needToken: true,
   });
 };
+
+export const requestRoom = (id, data) => {
+  return Request({
+    method: 'post',
+    url: baseUrl + '/dorm/request/' + id + '/',
+    needToken: true,
+    data:data
+  });
+};

@@ -22,6 +22,7 @@ class Index extends Component {
     this.state = {
       searchField: '',
       show: false,
+      clickedButton: '',
     };
   }
 
@@ -69,6 +70,7 @@ class Index extends Component {
               let roomName = `${item.block_number}-${item.room_number}`;
               return (
                 <Card
+                  key={item.id}
                   colorId={item.id}
                   title={roomName}
                   description={`ظرفیت: ${item.capacity}`}
@@ -101,24 +103,31 @@ class Index extends Component {
   renderButton(item) {
     let title = 'عضویت';
     let color = 'success';
-    let method = () => console.log('UU');
+    let data = {
+      is_add: true,
+    };
     if (item.my_status === OK) {
       title = 'لغو عضویت';
       color = 'error';
+      data.is_add = false;
     } else if (item.my_status === PENDING) {
       title = 'لغو درخواست';
       color = 'error';
+      data.is_add = false;
     }
 
     return (
       <Button
         title={title}
-        onPress={method}
+        onPress={() => {
+          this.props.membershipRequest(item.id, data);
+          this.setState({clickedButton: item.id});
+        }}
         color={color}
         size="small"
         border
         littleRound={true}
-        // loading={true}
+        loading={this.props.processing && item.id === this.state.clickedButton}
       />
     );
   }
@@ -128,12 +137,15 @@ const mapStateToProps = (store) => {
   return {
     loading: store.Room.loading,
     list: store.Room.list,
+    processing: store.Room.processing,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getRoomsList: () => dispatch(RoomAction.getList()),
+    membershipRequest: (id, data) =>
+      dispatch(RoomAction.applyMembership(id, data)),
   };
 };
 

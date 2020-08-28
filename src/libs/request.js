@@ -17,7 +17,7 @@ import {Auth} from '../constants/Navigations';
 const Request = (config) => {
   const needToken = config.needToken;
   const redirectLogin = () => {
-    console.log(RootNavigation.isFirstPage(), "RRR");
+    console.log(RootNavigation.isFirstPage(), 'RRR');
     if (!RootNavigation.isFirstPage()) {
       RootNavigation.navigate(Auth);
     }
@@ -64,6 +64,7 @@ const Request = (config) => {
     },
     function (error) {
       const originalRequest = error.config;
+      console.log(originalRequest._refreshTry, 'FFFF');
       if (!error.response) {
         Toast(SERVER_INTERRUPT_MESSAGES[REQUEST_TIMEOUT], ERROR);
       } else if (
@@ -93,36 +94,39 @@ const Request = (config) => {
             });
         }
         originalRequest._refreshTry = true;
-        Storage.getItem('refreshToken').then(console.log)
-        if (!Storage.getItem('refreshToken')) {
-          removeTokens();
-          return Promise.reject(error);
-        }
-        refreshing = true;
-        return new Promise(function (resolve, reject) {
-          Axios({
-            method: 'post',
-            url: REACT_APP_API_URL + '/auth/token/refresh/',
-            data: {
-              refresh_token: Storage.getItem('refreshToken'),
-            },
-          })
-            .then(async (response) => {
-              await setToken(response.data);
-              Axios.defaults.headers.common['Authorization'] =
-                'Bearer ' + (await Storage.getItem('accessToken'));
-              originalRequest.headers['Authorization'] =
-                'Bearer ' + (await Storage.getItem('accessToken'));
-              processQueue(null, await Storage.getItem('accessToken'));
-              resolve(Axios(originalRequest));
+        Storage.getItem('refreshToken').then(console.log);
+        Storage.getItem('refreshToken').then((refreshToken) => {
+          console.log(refreshToken, 'GGG');
+          if (!refreshToken) {
+            removeTokens();
+            return Promise.reject(error);
+          }
+          refreshing = true;
+          return new Promise(function (resolve, reject) {
+            Axios({
+              method: 'post',
+              url: REACT_APP_API_URL + '/auth/token/refresh/',
+              data: {
+                refresh_token: refreshToken,
+              },
             })
-            .catch((err) => {
-              processQueue(err, null);
-              reject(err);
-            })
-            .then(() => {
-              refreshing = false;
-            });
+              .then(async (response) => {
+                await setToken(response.data);
+                Axios.defaults.headers.common['Authorization'] =
+                  'Bearer ' + (await Storage.getItem('accessToken'));
+                originalRequest.headers['Authorization'] =
+                  'Bearer ' + (await Storage.getItem('accessToken'));
+                processQueue(null, await Storage.getItem('accessToken'));
+                resolve(Axios(originalRequest));
+              })
+              .catch((err) => {
+                processQueue(err, null);
+                reject(err);
+              })
+              .then(() => {
+                refreshing = false;
+              });
+          });
         });
       } else if (
         error.response &&

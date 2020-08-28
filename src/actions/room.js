@@ -34,3 +34,23 @@ export const getUsersListFailure = () => {
     type: types.GET_ROOM_USERS_LIST_FAILURE,
   };
 };
+
+export const applyMembership = (id, data) => {
+  return {
+    type: types.APPLY_MEMBERSHIP_REQUEST,
+    id: id,
+    data: data,
+  };
+};
+export const applyMembershipSuccess = (data) => {
+  return {
+    type: types.APPLY_MEMBERSHIP_SUCCESS,
+    data: data,
+  };
+};
+export const applyMembershipFailure = (data) => {
+  return {
+    type: types.APPLY_MEMBERSHIP_FAILURE,
+    data: data,
+  };
+};
