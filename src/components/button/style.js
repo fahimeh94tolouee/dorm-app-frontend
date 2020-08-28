@@ -6,6 +6,10 @@ const COLORS = {
     background: Variables.colors.primary_700,
     text: Variables.colors.complementary,
   },
+  white: {
+    background: Variables.colors.complementary,
+    text: Variables.colors.complementary_600,
+  },
   secondary: {
     background: Variables.colors.complementary_450,
     text: Variables.colors.complementary_800,

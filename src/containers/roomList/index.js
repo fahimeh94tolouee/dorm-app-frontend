@@ -14,6 +14,7 @@ import Card from '../../components/card';
 import Button from '../../components/button';
 import Loading from '../../components/loading/pageLoading';
 import EmptyState from '../../components/emptyState';
+import Confirm from '../../components/confirm';
 import {RoomsUser} from '../../constants/Navigations';
 import UserState, {OK, PENDING} from '../../constants/userStateTypes';
 
@@ -24,11 +25,20 @@ class Index extends Component {
       searchField: '',
       show: false,
       clickedButton: '',
+      confirm: {show: false, messages: '', data: {}},
     };
   }
 
   componentDidMount() {
     this.props.getRoomsList();
+  }
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.processing !== prevProps.processing &&
+      !this.props.processing
+    ) {
+      this.setState({confirm: {show: false, message: '', data: {}}});
+    }
   }
 
   makeTitle() {
@@ -42,8 +52,8 @@ class Index extends Component {
     }
   }
   render() {
-    const {searchField, show} = this.state;
-    const {loading, list} = this.props;
+    const {searchField, show, confirm} = this.state;
+    const {loading, list, processing} = this.props;
     let listData = searchField
       ? list.filter((item) => item.capacity === parseInt(searchField))
       : list;
@@ -76,6 +86,19 @@ class Index extends Component {
           )
         ) : (
           <ListContainer>
+            <Confirm
+              show={confirm.show}
+              messages={confirm.messages}
+              onClose={
+                processing
+                  ? () => false
+                  : () => this.setState({confirm: {...confirm, show: false}})
+              }
+              onAccept={() => {
+                this.sendMemberShipRequest(confirm.data);
+              }}
+              loading={processing}
+            />
             {listData.map((item) => {
               let roomName = `${item.block_number}-${item.room_number}`;
               return (
@@ -108,38 +131,50 @@ class Index extends Component {
       </ParentContainer>
     );
   }
-  //TODO EMPTY STATE
 
   renderButton(item) {
     let title = 'عضویت';
     let color = 'success';
     let data = {
+      id: item.id,
       is_add: true,
     };
+    let text =
+      'عضویت در این اتاق به منزله‌ی تایید تمام افراد تایید شده و در حال انتظار این اتاق می‌باشد، آیا از عضویت در این اتاق اطمینان دارید؟';
     if (item.my_status === OK) {
       title = 'لغو عضویت';
       color = 'error';
       data.is_add = false;
+      text = 'آیا از لغو عضویت خود در این اتاق اطمینان دارید؟';
     } else if (item.my_status === PENDING) {
       title = 'لغو درخواست';
       color = 'error';
       data.is_add = false;
+      text = 'آیا از لغو درخواست خود برای عضویت در این اتاق اطمینان دارید؟';
     }
 
     return (
       <Button
         title={title}
         onPress={() => {
-          this.props.membershipRequest(item.id, data);
-          this.setState({clickedButton: item.id});
+          // this.props.membershipRequest(item.id, data);
+          this.setState({confirm: {show: true, messages: text, data: data}});
         }}
         color={color}
         size="small"
         border
         littleRound={true}
-        loading={this.props.processing && item.id === this.state.clickedButton}
+        // loading={this.props.processing && item.id === this.state.clickedButton}
       />
     );
+  }
+
+  sendMemberShipRequest(data) {
+    const roomId = data.id;
+    const requestData = {
+      is_add: data.is_add,
+    };
+    this.props.membershipRequest(roomId, requestData);
   }
 }
 
