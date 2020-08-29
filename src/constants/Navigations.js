@@ -7,3 +7,4 @@ export const Rooms = 'Rooms';
 export const RoomsUser = 'RoomsUser';
 // export const Login = 'Login';
 export const Requests = 'Requests';
+export const Notifications = 'Notifications';

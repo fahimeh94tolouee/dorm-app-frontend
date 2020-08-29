@@ -2,9 +2,11 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Requests, Rooms} from '../constants/Navigations';
+import {Requests, Rooms, Notifications} from '../constants/Navigations';
 import RequestPage from '../containers/requests';
+import NotificationPage from '../containers/notifications';
 import {RoomStack} from './index';
+import Variables from '../assets/style/Variables';
 
 const Tabs = createBottomTabNavigator();
 
@@ -32,6 +34,10 @@ const MainTabs = () => {
                 color={color}
               />
             );
+          } else if (route.name === Notifications) {
+            return (
+              <MaterialIcons name={'notifications'} size={size} color={color} />
+            );
           }
 
           // You can return any component that you like here!
@@ -39,8 +45,9 @@ const MainTabs = () => {
         },
       })}
       tabBarOptions={{
-        activeTintColor: 'tomato',
+        activeTintColor: Variables.colors.primary_500,
         inactiveTintColor: 'gray',
+        showLabel: false,
       }}>
       <Tabs.Screen
         name={Rooms}
@@ -50,7 +57,12 @@ const MainTabs = () => {
       <Tabs.Screen
         name={Requests}
         component={RequestPage}
-        options={{title: 'درخواست‌ها', unmountOnBlur: true,}}
+        options={{title: 'درخواست‌ها', unmountOnBlur: true}}
+      />
+      <Tabs.Screen
+        name={Notifications}
+        component={NotificationPage}
+        options={{title: 'اعلان‌ها', unmountOnBlur: true}}
       />
     </Tabs.Navigator>
   );
