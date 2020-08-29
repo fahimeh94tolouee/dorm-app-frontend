@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import Variables from '../../assets/style/Variables';
 
 const COLORS = [
-  {color: Variables.colors.lemon},
-  {color: Variables.colors.pink},
-  {color: Variables.colors.green},
-  {color: Variables.colors.blue},
+  {color: 'rgba(171,142,192,0.51)'},
+  {color: 'rgba(220,49,72,0.51)'},
+  {color: `rgba(237, 172, 196, 0.51)`},
+  {color: `rgba(250, 197, 214, 0.51)`},
 ];
 
 export const ICON_COLORS = {
@@ -27,23 +27,11 @@ export const CardContainer = styled.TouchableOpacity`
 `;
 
 export const RightPart = styled.View`
-  width: 100px;
-  height: 100px;
-  background-color: ${(props) =>
-    props.colorId !== undefined
-      ? COLORS[props.colorId].color
-      : Variables.colors.complementary};
-  border-radius: 50px;
+  width: 30%;
   align-items: center;
   justify-content: center;
 `;
 
-export const RightPartText = styled.Text`
-  opacity: 1;
-  font-family: ${Variables.font_family.bold};
-  font-size: ${Variables.font_sizes.medium};
-  color: ${Variables.colors.black_800};
-`;
 
 export const LeftPart = styled.View`
   width: 70%;
@@ -58,7 +46,9 @@ export const LeftPart = styled.View`
 export const LeftPartText = styled.Text`
   font-family: ${Variables.font_family.ultra_light};
   font-size: ${Variables.font_sizes.small};
+  line-height: 36px;
   color: ${Variables.colors.black_800};
+  padding-right: 8px;
 `;
 
 export const LeftPartBody = styled.View`

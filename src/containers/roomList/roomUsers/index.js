@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {View} from 'react-native';
 import {RoomAction} from '../../../actions';
 import Header from '../../../components/header';
 import Loading from '../../../components/loading/pageLoading';
@@ -14,9 +13,8 @@ import {
   StatusText,
 } from '../style';
 import Button from '../../../components/button';
-import Modal from '../../../components/modal';
-import UserProperties from './userProperties';
 import EmptyState from '../../../components/emptyState';
+import UserDataModal from '../../../projectSpecificComponents/userData';
 
 class Index extends Component {
   constructor(props) {
@@ -41,16 +39,13 @@ class Index extends Component {
     const {userModal} = this.state;
     return (
       <ParentContainer>
-        {userModal.show && (
-          <Modal
-            show={userModal.show}
-            title={`مشخصات ${userModal.data.user}`}
-            onClose={() =>
-              this.setState({userModal: {...userModal, show: false}})
-            }>
-            <UserProperties user={userModal.data} />
-          </Modal>
-        )}
+        <UserDataModal
+          show={userModal.show}
+          user={userModal.data}
+          onClose={() =>
+            this.setState({userModal: {...userModal, show: false}})
+          }
+        />
         <Header
           title={`اتاق ${roomName}`}
           rightIcon={'ios-menu-sharp'}

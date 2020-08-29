@@ -38,7 +38,7 @@ export const ButtonContainer = styled.TouchableOpacity`
   border-radius: ${(props) => (!props.littleRound ? '24px' : '4px')};
   width: 100%;
   justify-content: center;
-  height: 48px;
+  height: ${(props) => (props.size === 'small' ? '32px' : '48px')};
 `;
 
 export const TextContainer = styled.Text`
@@ -48,6 +48,6 @@ export const TextContainer = styled.Text`
   font-family: ${Variables.font_family.light};
   font-size: ${(props) =>
     props.size === 'small'
-      ? Variables.font_sizes.small
+      ? Variables.font_sizes.little
       : Variables.font_sizes.small_x1};
 `;

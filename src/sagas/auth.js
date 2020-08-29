@@ -67,8 +67,8 @@ function* workerGetInfo(action) {
   try {
     const response = yield call(getInfo);
     const data = response.data;
-    yield put(AuthAction.updateInfoSuccess(data));
+    yield put(AuthAction.getInfoSuccess(data));
   } catch (error) {
-    yield put(AuthAction.updateInfoFailure());
+    yield put(AuthAction.getInfoFailure());
   }
 }

@@ -5,14 +5,14 @@ import {
   UserPropertyText,
   UserPropertyTitleContainer,
   UserPropertyTitle,
-} from '../style';
+} from './style';
 import {
   CLEAN_STATUS_OPTIONS,
   NOISE_STATUS_OPTIONS,
   PERSONALITY_STATUS_OPTIONS,
   RELIGIOUS_BELIEF_OPTIONS,
   SLEEP_STATUS_OPTIONS,
-} from '../../../constants/roomMemberPropertiesTypes';
+} from '../../constants/roomMemberPropertiesTypes';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 const UserProperties = ({user}) => {
   const rb = RELIGIOUS_BELIEF_OPTIONS.filter(
@@ -60,9 +60,9 @@ const UserProperties = ({user}) => {
   ];
   return (
     <UserPropertyParent>
-      {items.map((item) => {
+      {items.map((item, i) => {
         return (
-          <UserPropertyContainer>
+          <UserPropertyContainer key={i}>
             <UserPropertyTitleContainer>
               <Ionicons name="information-circle" size={24} color={'#863333'} />
               <UserPropertyTitle>{item.label}</UserPropertyTitle>

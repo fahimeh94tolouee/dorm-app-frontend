@@ -2,7 +2,7 @@ import React from 'react';
 import {
   CardContainer,
   RightPart,
-  RightPartText,
+  // RightPartText,
   LeftPart,
   LeftPartText,
   LeftPartBody,
@@ -21,9 +21,7 @@ const Card = (props) => {
             color={ICON_COLORS[props.icon.color]}
           />
         )}
-        {!!props.title && (
-          <RightPartText colorId={colorId}>{props.title}</RightPartText>
-        )}
+        {!!props.image && props.image}
       </RightPart>
       <LeftPart>
         {!!props.description && (

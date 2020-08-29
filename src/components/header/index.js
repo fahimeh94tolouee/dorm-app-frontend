@@ -2,6 +2,7 @@ import React from 'react';
 import {Header, HeaderText, InputContainer} from './style';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Input from '../../components/editText';
+import {View} from 'react-native';
 
 const Index = (props) => {
   return (
@@ -15,13 +16,15 @@ const Index = (props) => {
         />
       )}
       <HeaderText>{props.title}</HeaderText>
-      {!!props.leftIcon && (
+      {!!props.leftIcon ? (
         <Ionicons
           name={props.leftIcon}
           color="white"
           size={32}
           onPress={() => props.leftIconOnPress()}
         />
+      ) : (
+        <View style={{width: 32}} />
       )}
       {!!props.inputField && props.inputField.show && (
         <InputContainer>

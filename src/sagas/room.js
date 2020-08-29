@@ -51,7 +51,6 @@ function* workerApplyForRoomMembership(action) {
     yield put(RoomAction.applyMembershipSuccess(data));
   } catch (error) {
     const data = error.response.data.data;
-    console.log(data, 'ERROR DATA');
     yield put(RoomAction.applyMembershipFailure(data));
   }
 }

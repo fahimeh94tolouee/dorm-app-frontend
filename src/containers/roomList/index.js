@@ -17,6 +17,7 @@ import EmptyState from '../../components/emptyState';
 import Confirm from '../../components/confirm';
 import {RoomsUser} from '../../constants/Navigations';
 import UserState, {OK, PENDING} from '../../constants/userStateTypes';
+import Avatar from '../../projectSpecificComponents/avatar';
 
 class Index extends Component {
   constructor(props) {
@@ -105,7 +106,7 @@ class Index extends Component {
                 <Card
                   key={item.id}
                   colorId={item.id}
-                  title={roomName}
+                  image={<Avatar data={{id: item.id, title: roomName}} />}
                   description={`ظرفیت: ${item.capacity}`}
                   onPress={() =>
                     this.props.navigation.navigate(RoomsUser, {
@@ -163,7 +164,7 @@ class Index extends Component {
         color={color}
         size="small"
         border
-        littleRound={true}
+        // littleRound={true}
         // loading={this.props.processing && item.id === this.state.clickedButton}
       />
     );
