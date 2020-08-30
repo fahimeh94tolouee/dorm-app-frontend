@@ -10,65 +10,91 @@ import Loading from '../components/loading/initLoading';
 import CustomDrawerContent from './CustomDrawerContent';
 import CenterLayout from '../layouts/center';
 import ProfilePage from '../containers/profile';
+import {AuthAction} from '../actions';
 
 const Drawer = createDrawerNavigator();
 
 const Routes = (props) => {
-  const [isLoggedIn, changeIsLoggedIn] = useState(null);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    Storage.getItem('refreshToken')
-      .then((value) => changeIsLoggedIn(value))
-      .then(() => setLoading(false));
-  }, [props.userLoggedIn]);
-
-  if (loading) {
-    return <Loading />;
+  // const [isLoggedIn, changeIsLoggedIn] = useState(null);
+  // const [loading, setLoading] = useState(false);
+  // useEffect(() => {
+  //   Storage.getItem('refreshToken').then(() => props.initRequest());
+  // }, []);
+  async function getInit() {
+    let refreshToken = await Storage.getItem('refreshToken');
+    if (refreshToken) {
+      await props.initRequest();
+    }
   }
+  useEffect(() => {
+    getInit();
+  }, []);
+  // useEffect(() => {
+
+  // });
+  // useEffect(() => {
+  //   console.log(loading, props.initLoading, 'EEE');
+  //   Storage.getItem('refreshToken')
+  //     .then((value) => changeIsLoggedIn(value))
+  //     .then(() => setLoading(false));
+  // }, [props.userLoggedIn]);
   const ProfileComponent = (props) => (
     <CenterLayout>
       <ProfilePage {...props} />
     </CenterLayout>
   );
-  return (
-    <NavigationContainer ref={navigationRef}>
-      {isLoggedIn ? (
-        <Drawer.Navigator
-          drawerPosition="right"
-          drawerContent={CustomDrawerContent}>
-          <Drawer.Screen
-            name={Rooms}
-            component={MainStack}
-            options={{
-              drawerLabel: () => null,
-              title: null,
-              drawerIcon: () => null,
-              unmountOnBlur: true,
-            }}
-            // options={{header: () => null}}
-          />
-          <Drawer.Screen
-            name={Profile}
-            component={ProfileComponent}
-            options={({route, navigation}) => {
-              return {
-                swipeEnabled: false,
+  if (props.initLoading) {
+    return <Loading />;
+  } else {
+    return (
+      <NavigationContainer ref={navigationRef}>
+        {props.userLoggedIn ? (
+          <Drawer.Navigator
+            drawerPosition="right"
+            drawerContent={(prop) => (
+              <CustomDrawerContent {...prop} data={props.initData} />
+            )}>
+            <Drawer.Screen
+              name={Rooms}
+              component={MainStack}
+              options={{
+                drawerLabel: () => null,
+                title: null,
+                drawerIcon: () => null,
                 unmountOnBlur: true,
-              };
-            }}
-          />
-        </Drawer.Navigator>
-      ) : (
-        <AuthStack />
-      )}
-    </NavigationContainer>
-  );
+              }}
+              // options={{header: () => null}}
+            />
+            <Drawer.Screen
+              name={Profile}
+              component={ProfileComponent}
+              options={({route, navigation}) => {
+                return {
+                  swipeEnabled: false,
+                  unmountOnBlur: true,
+                };
+              }}
+            />
+          </Drawer.Navigator>
+        ) : (
+          <AuthStack />
+        )}
+      </NavigationContainer>
+    );
+  }
 };
 
 const mapStateToProps = (store) => {
   return {
     userLoggedIn: store.Auth.userLoggedIn,
+    initLoading: store.Init.loading,
+    initData: store.Init.data,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    initRequest: () => dispatch(AuthAction.getInit()),
   };
 };
 
-export default connect(mapStateToProps, null)(Routes);
+export default connect(mapStateToProps, mapDispatchToProps)(Routes);

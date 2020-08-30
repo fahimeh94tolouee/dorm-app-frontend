@@ -35,3 +35,11 @@ export const getInfo = () => {
     needToken: true,
   });
 };
+
+export const init = () => {
+  return Request({
+    method: 'get',
+    url: baseUrl + '/init/',
+    needToken: true,
+  });
+};

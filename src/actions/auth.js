@@ -75,3 +75,20 @@ export const getInfoFailure = () => {
     type: types.GET_INFO_FAILURE,
   };
 };
+
+export const getInit = () => {
+  return {
+    type: types.INIT_REQUEST,
+  };
+};
+export const getInitSuccess = (data) => {
+  return {
+    type: types.INIT_SUCCESS,
+    data: data,
+  };
+};
+export const getInitFailure = () => {
+  return {
+    type: types.INIT_FAILURE,
+  };
+};

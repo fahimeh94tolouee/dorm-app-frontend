@@ -16,12 +16,12 @@ const GetAvatarText = (user) => {
 };
 
 export default (props) => {
-  const {data} = props;
+  const {data, colorId, big} = props;
   if (data.image) {
-    return <Image source={{uri: data.image}} />;
+    return <Image source={{uri: data.image}} big={big} />;
   }
   return (
-    <AvatarContainer colorId={data.id % 4}>
+    <AvatarContainer colorId={colorId ? colorId : data.id % 4} big={big}>
       <Text>{data.title ? data.title : GetAvatarText(data)}</Text>
     </AvatarContainer>
   );

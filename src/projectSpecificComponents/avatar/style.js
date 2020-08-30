@@ -8,9 +8,9 @@ const COLORS = [
   {color: Variables.colors.random4},
 ];
 export const AvatarContainer = styled.View`
-  width: 98px;
-  height: 98px;
-  border-radius: 49px;
+  width: ${(props) => (props.big ? '120px' : '98px')};
+  height: ${(props) => (props.big ? '120px' : '98px')};
+  border-radius: ${(props) => (props.big ? '60px' : '49px')};
   background-color: ${(props) =>
     props.colorId !== undefined
       ? COLORS[props.colorId].color
@@ -26,9 +26,9 @@ export const Text = styled.Text`
 `;
 
 export const Image = styled.Image`
-  width: 64px;
-  height: 64px;
-  border-radius: 32px;
+  width: ${(props) => (props.big ? '120px' : '98px')};
+  height: ${(props) => (props.big ? '120px' : '98px')};
+  border-radius: ${(props) => (props.big ? '60px' : '49px')};
   align-items: center;
   justify-content: center;
 `;

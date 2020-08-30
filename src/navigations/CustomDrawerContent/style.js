@@ -22,12 +22,6 @@ export const Text = styled.Text`
   font-family: ${Variables.font_family.light};
 `;
 
-export const Image = styled.Image`
-  width: 120px;
-  height: 120px;
-  border-radius: 60px;
-`;
-
 export const DrawerItemContainer = styled(DrawerItem)`
   width: 100%;
   align-items: center;

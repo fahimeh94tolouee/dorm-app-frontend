@@ -1,17 +1,15 @@
 import {takeLatest, call, put} from 'redux-saga/effects';
 import * as types from '../actions/actionTypes';
 import {AuthAction} from '../actions';
-import Storage from 'react-native-expire-storage';
-import * as RootNavigation from '../navigations/RootNavigation';
 import * as authApi from '../api/auth';
 import {setToken} from '../libs/tokenManager';
-import {Rooms} from '../constants/Navigations';
 
 export function* watcherAuth() {
   yield takeLatest(types.LOGIN_REQUEST, workerLogin);
   yield takeLatest(types.REGISTER_REQUEST, workerRegister);
   yield takeLatest(types.UPDATE_INFO_REQUEST, workerUpdateInfo);
   yield takeLatest(types.GET_INFO_REQUEST, workerGetInfo);
+  yield takeLatest(types.INIT_REQUEST, workerInit);
 }
 
 function fetchLogin(data) {
@@ -54,6 +52,7 @@ function* workerUpdateInfo(action) {
     const response = yield call(updateInfo, action.data);
     const data = response.data.data;
     yield put(AuthAction.updateInfoSuccess(data));
+    yield put(AuthAction.getInitSuccess({user: action.data}));
   } catch (error) {
     yield put(AuthAction.updateInfoFailure());
   }
@@ -70,5 +69,20 @@ function* workerGetInfo(action) {
     yield put(AuthAction.getInfoSuccess(data));
   } catch (error) {
     yield put(AuthAction.getInfoFailure());
+  }
+}
+
+function init() {
+  return authApi.init();
+}
+
+function* workerInit(action) {
+  try {
+    const response = yield call(init);
+    const data = response.data.data;
+    yield put(AuthAction.getInitSuccess(data));
+    yield put(AuthAction.changeUserLoggedIn(true));
+  } catch (error) {
+    yield put(AuthAction.getInitFailure());
   }
 }
