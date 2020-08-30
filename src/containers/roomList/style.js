@@ -10,11 +10,12 @@ const COLORS = {
 export const ParentContainer = styled.View`
   flex: 1;
   width: 100%;
+  background-color: ${Variables.colors.complementary};
 `;
 
 export const ListContainer = styled.ScrollView`
-  margin: 32px auto;
   padding: 0 16px;
+  margin: 16px 0;
   flex: 1;
 `;
 

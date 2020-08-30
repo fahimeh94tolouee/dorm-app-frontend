@@ -16,7 +16,7 @@ const MainTabs = () => {
       screenOptions={({route}) => ({
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
-
+          size = 28;
           if (route.name === Rooms) {
             iconName = 'bunk-bed';
             return (
@@ -46,8 +46,12 @@ const MainTabs = () => {
       })}
       tabBarOptions={{
         activeTintColor: Variables.colors.primary_500,
-        inactiveTintColor: 'gray',
-        showLabel: false,
+        inactiveTintColor: Variables.colors.complementary_500,
+        labelStyle: {
+          fontFamily: Variables.font_family.light,
+        },
+        style: {paddingVertical: 8},
+        // showLabel: false,
       }}>
       <Tabs.Screen
         name={Rooms}

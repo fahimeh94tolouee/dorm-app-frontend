@@ -20,6 +20,7 @@ export const CardContainer = styled.TouchableOpacity`
   border-radius: 8px;
   flex-direction: row-reverse;
   elevation: 3;
+  border: 1px solid ${Variables.colors.complementary_300};
   align-items: center;
   padding: 8px;
   background-color: ${Variables.colors.complementary};

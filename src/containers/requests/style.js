@@ -4,10 +4,12 @@ import Variables from '../../assets/style/Variables';
 export const ParentContainer = styled.View`
   flex: 1;
   width: 100%;
+  background-color: ${Variables.colors.complementary};
+
 `;
 
 export const DemandsListContainer = styled.ScrollView`
-  margin: 32px auto;
+  margin: 16px 0;
   padding: 0 16px;
   flex: 1;
 `;
