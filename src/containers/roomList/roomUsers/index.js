@@ -83,7 +83,7 @@ class Index extends Component {
                       </StatusText>
                     </MyStatusContainer>
                     <Button
-                      title="مشاهده‌ی گراف وضعیت"
+                      title="ارسال پیام"
                       onPress={() => {}}
                       color="secondary"
                       size="small"
